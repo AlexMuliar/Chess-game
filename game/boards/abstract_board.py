@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod, ABCMeta
 from typing import List, Tuple
 from descriptors.board.board_size import BoardSize
-from game_builders.abstract_builder import AbstractBoardBuilder
+from chess_builders.abstract_builder import AbstractBoardBuilder
 
 
 class AbsctactBoard(metaclass=ABCMeta):

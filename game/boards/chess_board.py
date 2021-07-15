@@ -8,13 +8,13 @@ import os
 from abstract_board import AbsctactBoard
 
 from position import Postion
-from game_builders.abstract_builder import AbstractBoardBuilder
+from chess_builders.abstract_builder import AbstractBoardBuilder
 
 class ChessBoard(AbsctactBoard):
     @property
     def pretty(self) -> str:
-        return '\n'.join([' . '.join([
-            str(item) if item else ' ' for item in line
+        return '\n'.join(['  '.join([
+            str(item) if item else '·' for item in line
         ]) for line in self.board])
 
 
