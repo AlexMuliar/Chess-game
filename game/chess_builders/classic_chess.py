@@ -1,8 +1,9 @@
+from game.chess_rules import classic_chess
 from typing import List
 
-from abstract_builder import AbstractBoardBuilder
+from game.chess_builders.abstract_builder import AbstractBoardBuilder
 from game.chess_figures.abstract_figure import AbstractFigure
-from chess_figures.colored_figures_fabric import (WhiteKing,
+from game.chess_figures.colored_figures_fabric import (WhiteKing,
                 BlackKing, WhiteQueen, BlackQueen, WhiteRock,
                 BlackRock, WhiteBishop, BlackBishop, WhiteKnight,
                 BlackKnight, WhitePawn, BlackPawn)
@@ -24,3 +25,5 @@ class ClassicChessBuilder(AbstractBoardBuilder):
             WhiteBishop(), WhiteKnight(), WhiteRock()
         ]
         return board
+
+

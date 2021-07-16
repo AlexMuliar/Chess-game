@@ -5,7 +5,7 @@ from descriptors.chess_icon import ChessIconCode
 from position import Postion
 
 
-
+print(__name__)
 class AbstractFigure(metaclass=ABCMeta):
     icon = ChessIconCode()
     __slots__ = ()

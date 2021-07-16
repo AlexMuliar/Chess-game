@@ -1,7 +1,6 @@
 from typing import List, Tuple
 
-from abstract_figure import AbstractFigure
-from figure_color import WhiteFigure, BlackFigure
+from game.chess_figures.abstract_figure import AbstractFigure
 from rock import Rock
 from bishop import Bishop
 from position import Postion

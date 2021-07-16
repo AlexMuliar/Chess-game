@@ -5,10 +5,11 @@ from typing import List, Tuple
 import sys
 import os
 
-from abstract_board import AbsctactBoard
+from .abstract_board import AbsctactBoard
 
 from position import Postion
-from chess_builders.abstract_builder import AbstractBoardBuilder
+from game.chess_builders.abstract_builder import AbstractBoardBuilder
+
 
 class ChessBoard(AbsctactBoard):
     @property

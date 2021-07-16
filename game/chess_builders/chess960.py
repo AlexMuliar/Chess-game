@@ -1,7 +1,7 @@
 import random
 
 from typing import List
-from abstract_builder import AbstractBoardBuilder
+from .abstract_builder import AbstractBoardBuilder
 from classic_chess import ClassicChessBuilder
 from game.chess_figures.abstract_figure import AbstractFigure
 

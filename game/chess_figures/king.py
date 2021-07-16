@@ -1,7 +1,6 @@
 from typing import List, Set, Tuple
 
-from abstract_figure import AbstractFigure
-from figure_color import BlackFigure, WhiteFigure
+from game.chess_figures.abstract_figure import AbstractFigure
 from position import Postion
 
 
