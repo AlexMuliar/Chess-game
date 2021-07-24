@@ -7,13 +7,13 @@ from game.chess_rules.abstract_rule import AbstractChessRules
 from game.chess_figures.colored_figures_fabric import WhitePawn, BlackPawn
 
 from game.game import Game
-from game.basic_player import Player
+from game.players.user_cli import UserCLI
 
 if __name__ == '__main__':
     game = Game(
         ChessBoard((8, 8)),
         ClassicChessBuilder(),
         ClassicChessRules(),
-        [Player(), Player()]
+        [UserCLI(), UserCLI()]
     )
     print(game.run())

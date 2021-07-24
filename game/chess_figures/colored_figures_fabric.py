@@ -33,10 +33,9 @@ for index_, code in enumerate(range(0x2654, 0x2659)):
 
 for color, shift, direction in zip([BlackFigure, WhiteFigure], [0, 6], [1, -1]):
     cls_ = type(f"{color().color}{Pawn().__class__.__name__}",
-                (Pawn, color), (dict(icon=chr(0x2659 + shift)))
+                (PawnState, color),
+                (dict(icon=chr(0x2659 + shift), direction=direction, color=color().color))
         )
-    cls_.get_moves = PawnState(direction).get_moves
-    # cls_.get_moves.__name__ = Pawn.get_moves.__name__
     cls_.__str__ = lambda x: x.icon
     cls_.__str__.__name__ = '__str__'
     globals()[cls_().__class__.__name__] = cls_

@@ -9,8 +9,6 @@ class Bishop(AbstractFigure):
         super().__init__()
 
 
-
-
     @staticmethod
     def get_moves(current_position: Position, board_size: Tuple[int, int]) -> List[List[Position]]:
         start_bottom_position = Bishop._get_down_start_position(current_position, board_size)
@@ -53,7 +51,6 @@ class Bishop(AbstractFigure):
         return start_position
 
 
-
     @staticmethod
     def _get_side_start_position(current_position: Position, board_size: Tuple[int, int]) -> Position:
         distance_to_left_border = current_position.column
@@ -69,5 +66,3 @@ class Bishop(AbstractFigure):
             start_row, start_col
         )
         return start_position
-
-

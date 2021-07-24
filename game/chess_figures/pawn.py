@@ -21,9 +21,9 @@ class Pawn(AbstractFigure):
         return result
 
 
-class PawnState:
-    def __init__(self, direction) -> None:
-        self.direction = direction
+class PawnState(Pawn):
+    def __init__(self) -> None:
+        # self.direction = direction
         self.moved = False
 
     def get_moves(self, current_position: Position, board_size: Tuple[int, int]) -> List[List[Position]]:
