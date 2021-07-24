@@ -7,7 +7,7 @@ import os
 
 from .abstract_board import AbsctactBoard
 
-from position import Postion
+from position import Position
 from game.chess_builders.abstract_builder import AbstractBoardBuilder
 
 

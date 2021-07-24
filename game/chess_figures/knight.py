@@ -1,8 +1,7 @@
 from typing import List, Set, Tuple
 
 from game.chess_figures.abstract_figure import AbstractFigure
-from position import Postion
-
+from position import Position
 
 
 class Knight(AbstractFigure):
@@ -11,24 +10,25 @@ class Knight(AbstractFigure):
 
 
     @staticmethod
-    def get_moves(current_position: Postion, board_size: Tuple[int, int]) -> List[Postion]:
+    def get_moves(current_position: Position, board_size: Tuple[int, int]) -> List[Position]:
         moves = Knight._get_move_template()
         moves  = map(
-            lambda x: Postion(
+            lambda x: Position(
                 x.row + current_position.row,
                 x.column + current_position.column
             ),
             moves
         )
         moves = Knight._filter_outer_moves(moves, board_size)
-        return moves
+        return [[move] for move in moves]
+
 
 
     @staticmethod
-    def _get_move_template() -> List[Postion]:
-        basic_moves: List[Postion] = [
-            Postion(1, 2),
-            Postion(2, 1)
+    def _get_move_template() -> List[Position]:
+        basic_moves: List[Position] = [
+            Position(1, 2),
+            Position(2, 1)
         ]
         return [
             *basic_moves,
@@ -40,10 +40,10 @@ class Knight(AbstractFigure):
 
 
     @staticmethod
-    def _make_mirror_moves(moves: List[Postion], direction: Tuple[int, int]) -> List[Postion]:
-        new_moves: List[Postion] = list()
+    def _make_mirror_moves(moves: List[Position], direction: Tuple[int, int]) -> List[Position]:
+        new_moves: List[Position] = list()
         for move in moves:
-            new_moves.append(Postion(
+            new_moves.append(Position(
                 move.row * direction[0],
                 move.column * direction[1]
             ))

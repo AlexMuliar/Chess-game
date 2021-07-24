@@ -1,4 +1,4 @@
-from position import Postion
+from position import Position
 
 class Player:
     def __init__(self) -> None:
@@ -19,4 +19,4 @@ class Player:
     def get_coord(self):
         # TODO Make user input validator
         x, y = [int(coord) for coord in input("(x y) >>> ").split()]
-        return Postion(x, y)
+        return Position(x, y)

@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
-@dataclass(frozen=True)
-class Postion:
+
+@dataclass(frozen=True, eq=True)
+class Position:
     row: int
     column: int

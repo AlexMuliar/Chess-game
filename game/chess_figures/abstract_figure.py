@@ -2,10 +2,9 @@ from typing import List, Tuple, Any, Dict
 from abc import ABC, abstractmethod, abstractstaticmethod, ABCMeta
 
 from descriptors.chess_icon import ChessIconCode
-from position import Postion
+from position import Position
 
 
-print(__name__)
 class AbstractFigure(metaclass=ABCMeta):
     icon = ChessIconCode()
     __slots__ = ()
@@ -15,12 +14,12 @@ class AbstractFigure(metaclass=ABCMeta):
 
 
     @abstractstaticmethod
-    def get_moves(self, current_position: Postion, board_size:  Tuple[int, int]) -> List[Postion]:
+    def get_moves(self, current_position: Position, board_size:  Tuple[int, int]) -> List[List[Position]]:
         raise NotImplementedError()
 
 
     @staticmethod
-    def _filter_outer_moves(moves: List[Postion], board_size: Tuple[int, int]) -> List[Postion]:
+    def _filter_outer_moves(moves: List[Position], board_size: Tuple[int, int]) -> List[Position]:
         return list(filter(
             lambda x: 0 <= x.row < board_size[0] and \
                         0 <= x.column < board_size[1],

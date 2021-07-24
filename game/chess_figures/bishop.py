@@ -1,7 +1,7 @@
 from typing import List, Set, Tuple, Iterator
 
 from game.chess_figures.abstract_figure import AbstractFigure
-from position import Postion
+from position import Position
 
 
 class Bishop(AbstractFigure):
@@ -9,23 +9,27 @@ class Bishop(AbstractFigure):
         super().__init__()
 
 
+
+
     @staticmethod
-    def get_moves(current_position: Postion, board_size: Tuple[int, int]) -> List[Postion]:
+    def get_moves(current_position: Position, board_size: Tuple[int, int]) -> List[List[Position]]:
         start_bottom_position = Bishop._get_down_start_position(current_position, board_size)
         start_side_position = Bishop._get_side_start_position(current_position, board_size)
-        return list(Bishop._get_diagonal_moves(current_position, board_size,
+        return [
+            Bishop._get_diagonal_moves(current_position, board_size, \
                 start_bottom_position, zip(range(board_size[0]), range(board_size[1]))
-        ) | Bishop._get_diagonal_moves(current_position, board_size,
+        ), Bishop._get_diagonal_moves(current_position, board_size, \
                 start_side_position, zip(range(0, -start_side_position.row-1, -1), range(board_size[1] - start_side_position.column))
-        ))
+            )
+        ]
 
 
-
-    def _get_diagonal_moves(self, current_position: Postion, board_size: Tuple[int, int],
-                         start_position: Postion, diagonal: zip) -> Set[Postion]:
-        moves: List[Postion] = list()
+    @staticmethod
+    def _get_diagonal_moves(current_position: Position, board_size: Tuple[int, int],
+                         start_position: Position, diagonal: zip) -> Set[Position]:
+        moves: List[Position] = list()
         for row, col in diagonal:
-            new_position = Postion(
+            new_position = Position(
                 start_position.row + row,
                 start_position.column + col,
             )
@@ -36,14 +40,14 @@ class Bishop(AbstractFigure):
 
 
     @staticmethod
-    def _get_down_start_position(current_position: Postion, board_size: Tuple[int, int]) -> Postion:
+    def _get_down_start_position(current_position: Position, board_size: Tuple[int, int]) -> Position:
         if current_position.row >= current_position.column:
             start_row = current_position.row - current_position.column
             start_col = 0
         else:
             start_row = 0
             start_col = current_position.column - current_position.row
-        start_position = Postion(
+        start_position = Position(
             start_row, start_col
         )
         return start_position
@@ -51,7 +55,7 @@ class Bishop(AbstractFigure):
 
 
     @staticmethod
-    def _get_side_start_position(current_position: Postion, board_size: Tuple[int, int]) -> Postion:
+    def _get_side_start_position(current_position: Position, board_size: Tuple[int, int]) -> Position:
         distance_to_left_border = current_position.column
         distance_to_bottom_border = board_size[0] - current_position.row - 1
 
@@ -61,7 +65,7 @@ class Bishop(AbstractFigure):
         else:
             start_row = board_size[0] - 1
             start_col =  current_position.column - distance_to_bottom_border
-        start_position = Postion(
+        start_position = Position(
             start_row, start_col
         )
         return start_position
